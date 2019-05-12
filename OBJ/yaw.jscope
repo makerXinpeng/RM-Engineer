@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<JScopeProject>
+    <FileVersion major="1" minor="1" />
+    <Project>
+        <Configuration>
+            <JLink>
+                <Options IsRTTSession="0" IsRTTWithTimeStamp="1" SamplingPeriod="20000" Connection="1" SerialNo="0" IP="" TargetDevice="STM32F427II" TargetInterface="SWD" InterfaceSpeed="4000" />
+            </JLink>
+            <ElfFile Name="F:\机器人ROBOTLAB\RoboMaster\7.电控组\5.电控组GitHub\底盘\Remote(beta)\OBJ\remote.axf" />
+            <DataFile Name="" />
+            <RawFile Name="" />
+            <Scope>
+                <Options TimeResolutionUs="1000000" />
+            </Scope>
+        </Configuration>
+        <Windows>
+            <Graph Show="1" />
+            <Watch Show="1" />
+        </Windows>
+        <SelectedSymbols>
+            <Symbol>
+                <Options Name="raw_value" Address="0x20000258" Type="int" TypeID="12" Size="4" GraphColorRed="255" GraphColorGreen="215" GraphColorBlue="0" YMinSampled="0" YMaxSampled="1126101824" YAvgSampled="211569213" Offset="4" ShowInGraph="1" YOffset="200" IsAutoConfig="1" YResolution="1000000000" MaxValue="2000000000" File="..\3508\Encoder.c" Scope="0" DrawStyle="0" />
+            </Symbol>
+            <Symbol>
+                <Options Name="ecd_value" Address="0x20000260" Type="int" TypeID="12" Size="4" GraphColorRed="0" GraphColorGreen="255" GraphColorBlue="0" YMinSampled="-4727" YMaxSampled="16827" YAvgSampled="7734" Offset="8" ShowInGraph="0" YOffset="200" IsAutoConfig="1" YResolution="10000" MaxValue="20000" File="..\3508\Encoder.c" Scope="0" DrawStyle="0" />
+            </Symbol>
+            <Symbol>
+                <Options Name="filter_rate" Address="0x20000294" Type="int" TypeID="12" Size="4" GraphColorRed="0" GraphColorGreen="0" GraphColorBlue="255" YMinSampled="-17" YMaxSampled="19" YAvgSampled="0" Offset="12" ShowInGraph="0" YOffset="200" IsAutoConfig="1" YResolution="10" MaxValue="20" File="..\3508\Encoder.c" Scope="0" DrawStyle="0" />
+            </Symbol>
+        </SelectedSymbols>
+    </Project>
+</JScopeProject>
