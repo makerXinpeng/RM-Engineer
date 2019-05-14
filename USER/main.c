@@ -54,9 +54,6 @@ void BSP_init(void)
     delay_init(180); //参数180为系统时钟频率
     uart_init(115200);	//串口初始化波特率为115200
     NVIC_PriorityGroupConfig(NVIC_PriorityGroup_4);//设置系统中断优先级分组4
-
-    laser_configuration();
-    
     CAN_Configure();
     Encoder_Start();
 
@@ -66,13 +63,8 @@ void BSP_init(void)
     
     chassis_init();
     
-    CloudMotor_Config();
-    TriggerMotor_PID_Config();
-    
     //24输出控制口 初始化
     power_ctrl_configuration();
-    
-    fric_PWM_configuration();
     
     //24v 输出 依次上电
     for (uint8_t i = POWER1_CTRL_SWITCH; i < POWER4_CTRL_SWITCH + 1; i++)

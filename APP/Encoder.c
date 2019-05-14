@@ -47,17 +47,18 @@ void CanReceiveMsgProcess(CanRxMsg *message)
         getEncoderData(&CMEncoder[3], message);
         break;
     }
-    case CAN_ID_CM5:
-    {
-        getEncoderData(&CMEncoder[4], message);
-        break;
-    }
-    case CAN_ID_CM6:
-    {
-        getEncoderData(&CMEncoder[5], message);
-        break;
-    }
-    }
+}
+//    case CAN_ID_CM5:
+//    {
+//        getEncoderData(&CMEncoder[4], message);
+//        break;
+//    }
+//    case CAN_ID_CM6:
+//    {
+//        getEncoderData(&CMEncoder[5], message);
+//        break;
+//    }
+//    }
 }
 
 /**

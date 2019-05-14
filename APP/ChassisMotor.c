@@ -46,8 +46,8 @@ void chassis_init(void)
     //获取遥控器指针
     chassis_move.chassis_RC=get_remote_control_point();
     //获取云台电机数据指针
-    chassis_move.chassis_yaw_motor = get_yaw_motor_point();
-    chassis_move.chassis_pitch_motor = get_pitch_motor_point();
+//    chassis_move.chassis_yaw_motor = get_yaw_motor_point();
+//    chassis_move.chassis_pitch_motor = get_pitch_motor_point();
     //初始化PID数据
     for(int i=0; i<4; i++)
         PID_Init(&chassis_move.motor_speed_pid[i],PID_POSITION,Chassis_speed_PID,M3508_MOTOR_SPEED_PID_MAX_OUT,M3508_MOTOR_SPEED_PID_MAX_IOUT);
@@ -200,11 +200,8 @@ static void chassis_set_contorl(chassis_move_t *chassis_move_control)
     chassis_infantry_follow_gimbal_yaw_control(&vx_set, &vy_set, &angle_set, chassis_move_control);
     
     fp32 sin_yaw = 0.0f, cos_yaw = 0.0f;
-    //旋转控制底盘速度方向，保证前进方向是云台方向，有利于运动平稳
-    sin_yaw = arm_sin_f32(-chassis_move_control->chassis_yaw_motor->relative_angle);
-    cos_yaw = arm_cos_f32(-chassis_move_control->chassis_yaw_motor->relative_angle);
-    chassis_move_control->vx_set =  cos_yaw * vx_set - sin_yaw * vy_set;
-    chassis_move_control->vy_set =  sin_yaw * vx_set + cos_yaw * vy_set;
+    chassis_move_control->vx_set =  -vx_set;
+    chassis_move_control->vy_set =  -vy_set;
     //设置控制相对云台角度
     chassis_move_control->chassis_relative_angle_set = rad_format(angle_set);
     //计算旋转PID角速度
@@ -229,7 +226,7 @@ static void chassis_vector_to_mecanum_wheel_speed(const fp32 vx_set, const fp32 
 //    if(chassis_move.chassis_RC->key.v & KEY_PRESSED_OFFSET_SHIFT || chassis_move.chassis_RC->rc.s[0]==1)
 //        speed_change=1.0f;
 //    else
-        speed_change=2.0f;
+        speed_change=1.5f;
     chassis_move.motor_chassis[0].speed_set = - vx_set + vy_set + wz_set * CHASSIS_WZ_RC_SEN;
     chassis_move.motor_chassis[1].speed_set =   vx_set + vy_set + wz_set * CHASSIS_WZ_RC_SEN;
     chassis_move.motor_chassis[2].speed_set = - vx_set - vy_set + wz_set * CHASSIS_WZ_RC_SEN;
